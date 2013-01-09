@@ -49,15 +49,17 @@ jQuery(document).ready(function () {
     mkScrCookie("scrReach", _scrReach);
 	
 	// Whenever the user scrolls, the measurements are calculated again and if scroll reach is higher, the value is written to a cookie.
-    jQuery(document).scroll(function () {
-		_docHeight = jQuery(document).height();
-		_winHeight = jQuery(window).height();
-        _scrTop = jQuery(window).scrollTop();
-        var e = _scrTop + _winHeight;
-        var t = Math.round(e / _docHeight * 100);
-        if (t > _scrReach) {
-            _scrReach = t;
-            mkScrCookie("scrReach", t)
-        }
-    });
+    if (!navigator.userAgent.match(/MSIE (5|6|7|8).*Trident/)){
+	    jQuery(document).scroll(function () {
+			_docHeight = jQuery(document).height();
+			_winHeight = jQuery(window).height();
+	        _scrTop = jQuery(window).scrollTop();
+	        var e = _scrTop + _winHeight;
+	        var t = Math.round(e / _docHeight * 100);
+	        if (t > _scrReach) {
+	            _scrReach = t;
+	            mkScrCookie("scrReach", t)
+	        }
+	    });
+    }
 });
