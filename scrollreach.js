@@ -34,9 +34,9 @@ jQuery(document).ready(function () {
 		
 		// Test if cookie exists from previous page on domain before tracking scroll reach
         if (_scrCookie != undefined && document.referrer.indexOf("//"+document.location.hostname) > -1) {
-            _gaq.push(["_trackEvent", "scroll reach", "viewport height: " + jQuery(window).height(), document.referrer.toString(), _scrCookie]);
+            _gaq.push(["_trackEvent", "scroll reach", "viewport: " + jQuery(window).height() +"x"+ jQuery(window).width(), document.referrer.toString(), _scrCookie]);
 			
-			// Remove cookie for 
+			// Remove cookie for next page
             rmScrCookie("scrReach")
         }
     } catch (err) {}
