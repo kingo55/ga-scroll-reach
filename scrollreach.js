@@ -48,8 +48,9 @@ jQuery(document).ready(function () {
     var _scrReach = Math.round(_winHeight / _docHeight * 100);
     mkScrCookie("scrReach", _scrReach);
 	
-	// Whenever the user scrolls, the measurements are calculated again and if scroll reach is higher, the value is written to a cookie.
-    if (!navigator.userAgent.match(/MSIE (5|6|7|8)(.*Trident)?/)){
+    // Whenever the user scrolls, the measurements are calculated again and if scroll reach is higher, the value is written to a cookie.
+    var regex = /MSIE (5|6|7|8)(.*Trident)?/g
+    if (!regex.test(navigator.userAgent)){
 	    jQuery(document).scroll(function () {
 			_docHeight = jQuery(document).height();
 			_winHeight = jQuery(window).height();
